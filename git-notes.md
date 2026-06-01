@@ -71,3 +71,47 @@ Agar galti se saaman cart mein chala gaya hai, toh bill banwane se pehle usko ba
 | :--- | :--- |
 | `git restore --staged <file>` | Ek file ko cart (staging) se wapas nikalta hai. |
 | `git reset` | Saari files ko ek saath cart se wapas nikal deta hai (Tera code safe rehta hai, bas add cancel ho jata hai). |
+
+---
+
+## 🤝 Teamwork aur Open Source (Advanced Concepts)
+
+Jab tum akele kaam nahi karte, balki puri team ya duniya (Open Source) ke saath code share karte ho, tab ye 3 concepts aate hain:
+
+### 1. `git clone` (Godown ki Xerox Copy Nikalna)
+* **Kab use karein?** Jab tu kisi nayi company mein join kare ya apni team ke kisi project par pehli baar kaam start kare. 
+* **Kya hota hai?** GitHub par jo project (Godown) hai, `git clone <link>` chalane se uski poori history aur saari files tere laptop mein download ho jati hain. Ek baar clone kar liya, toh wapas `git init` nahi karna padta.
+
+### 2. Fork 🍴 (Dusre ka Godown Apne Naam Karna)
+* **Kab use karein?** Jab tujhe kisi aise project mein kaam karna ho jiski chaabi (permission) tere paas nahi hai (Jaise Microsoft ya Google ka public code).
+* **Kya hota hai?** GitHub par ek **"Fork"** button hota hai. Us par click karne se us project ki ek exact copy **tere GitHub account** mein ban jati hai. Ab tu us nayi copy ka maalik hai aur aaram se `clone`, `add`, `commit`, `push` kar sakta hai.
+
+### 3. Pull Request (PR) 📩 (Request Bhejna)
+* **Kya hota hai?** Jab tune Fork karke apne paas changes kar liye aur tujhe lagta hai ki tera solution perfect hai, toh tu original owner ko ek request bhejta hai: *"Bhai, maine aapke code mein ek galti theek ki hai, isko check karke apne main project mein daal lo."* 
+* Isko **Pull Request (PR)** bolte hain. Agar unhe tera code pasand aaya, toh wo tere code ko apne original godown mein mila (merge kar) lenge. Aur tu ban jayega ek Open Source Contributor! 🌟
+
+---
+
+## 🌳 Branching aur Merging (3-Year Experience Level)
+
+**Branch kya hai?**
+Maan lo tumhara main project ek chalta hua **Highway** hai (isko hum **`main`** branch kehte hain). Ab tumhe usme ek naya feature dalna hai, par darr hai ki highway ka traffic na ruk jaye (code fat na jaye). Toh tum ek **'Service Road' (Nayi Branch)** banate ho. Wahan aaram se naya feature banate ho aur test karte ho. Jab sab sahi chalta hai, toh usko wapas highway se jod dete ho (isko **Merge** kehte hain). Agar feature fail ho gaya, toh service road ko tod do, asali highway safe rahega!
+
+### Branching Ke Top Commands:
+
+| Command | Kya Karta Hai? |
+| :--- | :--- |
+| `git branch` | Batata hai ki project mein kitni branches hain aur tum abhi kis par ho. |
+| `git branch <naam>` | Ek nayi branch banata hai (Jaise: `git branch login-page`). |
+| `git switch <naam>` | Tumhe us nayi branch ke andar le jata hai. |
+| `git checkout -b <naam>` | Nayi branch banata bhi hai aur turant uske andar bhej deta hai (Sabse zyada yahi use hota hai). |
+| `git merge <naam>` | Dusri branch ke code ko tumhari current branch mein mila deta hai. |
+| `git branch -d <naam>` | Kaam khatam hone ke baad branch ko delete karta hai. |
+
+### Step-by-Step Kaam Kaise Karein? (Example)
+1. **Nayi Branch Banao:** `git checkout -b new-payment`
+   *(Ab tum main code se alag ho gaye ho. Yahan jo bhi change karoge, main code ko pata nahi chalega).*
+2. **Kaam Karo:** Code likho, aur normal tareeke se commit karo (`git add .` aur `git commit -m "payment daal diya"`).
+3. **Wapas Asali Raste Par Aao:** Jab testing pass ho jaye, toh wapas main branch mein aao: `git switch main`
+4. **Merge (Mila Do):** Ab us naye feature ko apne chalo project mein jod do: `git merge new-payment`
+5. **Kachra Saaf Karo:** Feature jod diya, toh ab us service road ki zaroorat nahi hai: `git branch -d new-payment`
