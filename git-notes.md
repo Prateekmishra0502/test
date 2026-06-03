@@ -9,7 +9,7 @@
 ## 🛒 The Shopping Cart Analogy (Yaad Rakhne Ka Sabse Aasan Tarika)
 
 Git ko ek Supermarket samajh lo. Tumhara code tumhara saaman hai.
-
+winget install --id Git.Git -e --source winget for  intall git
 1. **`git init` (Nayi Dukaan Kholna):** Tumne ek thela uthaya aur shopping shuru ki. Ye sirf ek baar hota hai jab project naya ho.
 2. **`git add .` (Saaman Cart Mein Daalna):** Tumne code likha aur use ek cart (Staging Area) mein daal diya. Bill abhi nahi bana hai.
 3. **`git commit -m "msg"` (Bill Banwana):** Counter par gaye aur pakka bill banwa liya. Ab ye saaman (code) hamesha ke liye record ban gaya.
