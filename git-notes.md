@@ -115,3 +115,16 @@ Maan lo tumhara main project ek chalta hua **Highway** hai (isko hum **`main`** 
 3. **Wapas Asali Raste Par Aao:** Jab testing pass ho jaye, toh wapas main branch mein aao: `git switch main`
 4. **Merge (Mila Do):** Ab us naye feature ko apne chalo project mein jod do: `git merge new-payment`
 5. **Kachra Saaf Karo:** Feature jod diya, toh ab us service road ki zaroorat nahi hai: `git branch -d new-payment`
+
+Created git_workflow_guide.md
+
+Maine aapke aur aapki team ke liye ek complete **Git Workflow Guide** taiyar kar di hai. Isme shuru se aakhiri tak saare steps, commands aur rules (jaise har module ke liye branch banana) aasan bhasha me likhe gaye hain.
+
+Aap upar diye gaye **`git_workflow_guide.md`** par click karke ise padh sakte hain.
+
+Aap is guide ko apne project me dalne ke liye ye kar sakte hain:
+1. Isme likha pura text copy karein.
+2. Apne project ke andar ek nayi file banayein jiska naam ho `TEAM_WORKFLOW.md` ya `GIT_RULES.md`.
+3. Usme paste karke save karein aur `git commit` karke master me dal dein, taki aapki team me sab koi ise dekh sake aur rules follow kar sake!
+
+Agar aapko is guide me koi aur step bhi add karwana ho toh zaroor batayein!
