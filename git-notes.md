@@ -118,13 +118,96 @@ Maan lo tumhara main project ek chalta hua **Highway** hai (isko hum **`main`** 
 
 Created git_workflow_guide.md
 
-Maine aapke aur aapki team ke liye ek complete **Git Workflow Guide** taiyar kar di hai. Isme shuru se aakhiri tak saare steps, commands aur rules (jaise har module ke liye branch banana) aasan bhasha me likhe gaye hain.
+# Git & Bitbucket: Complete Team Workflow Guide
 
-Aap upar diye gaye **`git_workflow_guide.md`** par click karke ise padh sakte hain.
+Ye document aap aur aapki team ke liye ek complete guide hai. Isme shuru se aakhiri tak har ek command aur rule diya gaya hai. Aap ise padh kar apni repository me ek `.md` file ke roop me save kar sakte hain.
 
-Aap is guide ko apne project me dalne ke liye ye kar sakte hain:
-1. Isme likha pura text copy karein.
-2. Apne project ke andar ek nayi file banayein jiska naam ho `TEAM_WORKFLOW.md` ya `GIT_RULES.md`.
-3. Usme paste karke save karein aur `git commit` karke master me dal dein, taki aapki team me sab koi ise dekh sake aur rules follow kar sake!
+---
 
-Agar aapko is guide me koi aur step bhi add karwana ho toh zaroor batayein!
+## 1. Pehli Baar Setup (First Time Setup)
+Jab bhi koi naya team member computer par pehli baar kaam shuru kare, toh use ye karna hoga:
+
+**A. Git Identity Set Karna:**
+```bash
+git config --global user.name "Unka Naam"
+git config --global user.email "unka.email@gmail.com"
+```
+
+**B. Project Computer Me Laana (Clone):**
+```bash
+git clone <bitbucket-repository-link>
+cd <project-folder-name>
+```
+
+---
+
+## 2. Team Member Ka Workflow (Har Naye Module Ke Liye)
+**Rule:** Team member kabhi bhi `master` branch par kaam nahi karega. Har naye task ya module ke liye ek **alag nayi branch** banegi.
+
+**Step 1: Nayi Branch Banana (Aur us par jana)**
+Agar wo "Login Module" bana raha hai:
+```bash
+git checkout -b feature/login-module
+```
+
+**Step 2: Code Likhna aur Save Karna**
+VS Code me kaam khatam karne aur files save (Ctrl+S) karne ke baad:
+```bash
+git add .
+git commit -m "Login module ka design aur API integrate kiya"
+```
+
+**Step 3: Bitbucket Par Bhejna (Push)**
+```bash
+git push origin feature/login-module
+```
+
+**Step 4: Pull Request (PR) Banana (Bitbucket Website Par)**
+- Bitbucket open karein.
+- **Pull requests** menu par click karein -> **Create pull request**.
+- Source me apni branch (`feature/login-module`) chunein aur Destination me `master` chunein.
+- **Create** kar dein aur Admin (Aap) se check karne ko kahein.
+
+---
+
+## 3. Admin / Owner Ka Workflow (Aapka Kaam)
+Kyunki aap owner hain, aapka kaam code ko check karna aur manage karna hai.
+
+**A. Team ka Code Merge Karna:**
+- Bitbucket par **Pull requests** open karein.
+- Team member ki PR par click karein.
+- **Files changed** me code check karein.
+- Agar sab theek hai toh **"Merge"** button par click kar dein. (Ab unka code `master` me jud gaya hai).
+
+**B. Apne Computer Par Naya Code Laana (Pull):**
+Jab aapne kisi ka code `master` me merge kar diya, toh wo aapke computer par apne aap nahi aayega. Aapko us naye code ko computer me lana hoga:
+```bash
+git checkout master
+git pull origin master
+```
+
+**C. Aapka Khud Ka Code Likhna:**
+Aap seedha `master` branch par kaam kar sakte hain:
+```bash
+git add .
+git commit -m "Admin ne naye changes kiye"
+git push origin master
+```
+
+---
+
+## 4. Branch Naming Rules (Branch ka naam kaise rakhein)
+Teams me branch ka naam is tareeqe se rakha jata hai taki dekhte hi samajh aa jaye ki isme kya kaam hua hai:
+
+* **Naya feature/module banana ho:** `feature/module-naam` (Jaise: `feature/dashboard-ui`)
+* **Koi bug (galti) theek karni ho:** `bugfix/issue-naam` (Jaise: `bugfix/login-error`)
+* **Sirf backup lena ho:** `wip/kuch-kaam` (Jaise: `wip/rahul-backup`)
+
+---
+
+## 5. Daily Kaam Shuru Karne Se Pehle Ki Habit
+Roz subah kaam shuru karne se pehle sabko ye command chalani chahiye taki agar kisi aur ne koi code dala ho, toh wo unhe mil jaye:
+```bash
+git pull origin master
+```
+
